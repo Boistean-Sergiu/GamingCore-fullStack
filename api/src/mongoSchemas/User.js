@@ -53,6 +53,9 @@ UserSchema.statics.findUser = function (email, password) {
 
             return user
         })
+        .catch(err => {
+            console.log(err)
+        })
 }
 
 module.exports = User = mongoose.model('users', UserSchema)

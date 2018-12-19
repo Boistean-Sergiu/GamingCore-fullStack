@@ -1,4 +1,3 @@
-const { RESTDataSource } = require('apollo-datasource-rest')
 const steam = require('steam-web')
 const config = require('../../config/config')
 
@@ -11,13 +10,14 @@ module.exports = class SteamAPI {
     }
 
     getSteamAPIList() {
-        this.steam.getSupportedAPIList({
+        this.steam.getSchema({
+            gameid: 440,
             callback: function (err, data) {
-                console.log('este!')
+                console.log(data);
             }
         })
         return [{
-            ID: "1",
+            ID: "1asdasd1d1d2sada",
             email: "String!",
             username: "@asdad",
             password: "111111",
