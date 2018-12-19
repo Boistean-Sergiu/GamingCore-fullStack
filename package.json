@@ -1,0 +1,33 @@
+{
+  "name": "gamingcore-fullstack",
+  "version": "1.0.0",
+  "description": "MonoRepo for the app",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon run ./api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boistean-Sergiu/GamingCore-fullStack.git"
+  },
+  "author": "Boistean Sergiu Andrei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Boistean-Sergiu/GamingCore-fullStack/issues"
+  },
+  "homepage": "https://github.com/Boistean-Sergiu/GamingCore-fullStack#readme",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.2.1",
+    "apollo-server": "^2.3.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.0.2",
+    "graphql-yoga": "^1.16.7",
+    "joi": "^14.3.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.0",
+    "steam-web": "^0.7.0"
+  }
+}
