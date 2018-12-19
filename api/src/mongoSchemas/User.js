@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const { Schema, model } = mongoose
+const { Schema } = mongoose
+const ErrorLogging = require('../datasources/log')
 
 const UserSchema = new Schema({
     username: {
@@ -21,34 +22,19 @@ const UserSchema = new Schema({
 })
 
 UserSchema.statics.findUser = function (email, password) {
+    const errorLogging = new ErrorLogging()
     return this.findOne({ email })
         .then(user => {
             if (!user) {
-                const Log = model('logs')
+                errorLogging.notFoundError('User', 'Email not found in user collection')
 
-                const log = new Log({
-                    status: "404",
-                    message: "User not found",
-                    result: {
-                        error: "Email not found in user collection"
-                    }
-                })
-
-                log.save()
+                return
             }
 
             if (user.password !== password) {
-                const Log = model('logs')
+                errorLogging.notFoundError('User', 'Wrong email-password pairing')
 
-                const log = new Log({
-                    status: "404",
-                    message: "User not found",
-                    result: {
-                        error: "Wrong email-password pairing"
-                    }
-                })
-
-                log.save()
+                return
             }
 
             return user

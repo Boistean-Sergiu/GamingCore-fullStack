@@ -2,7 +2,6 @@ module.exports = typeDefs = `
     type Mutation {
         signup(email: String!, password: String!, username: String!): AuthPayload
         addUser(email: String!, password: String!, username: String!): User!
-        findUser(email: String!, password: String!): User
     }
     type AuthPayload{
         token: String
@@ -17,5 +16,6 @@ module.exports = typeDefs = `
     }
     type Query {
         getUsers: [User!]!
+        findUser(email: String!, password: String!): User
     }
 `

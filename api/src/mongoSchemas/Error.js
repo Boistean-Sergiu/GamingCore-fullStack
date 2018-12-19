@@ -12,7 +12,7 @@ const LogSchema = new Schema({
     },
     result: {
         type: JSON,
-        required: True
+        required: true
     }
 })
 

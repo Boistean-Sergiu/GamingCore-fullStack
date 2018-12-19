@@ -5,6 +5,10 @@ module.exports = resolvers = {
     Query: {
         getUsers: async (_, __, { dataSources }) => {
             return dataSources.steamAPI.getSteamAPIList()
+        },
+
+        findUser: async (_, { email, password }, __) => {
+            return User.findUser(email, password)
         }
     },
     Mutation: {
@@ -27,10 +31,6 @@ module.exports = resolvers = {
                 })
                 .catch(err => console.error(err))
             return user
-        },
-
-        findUser: async (_, { email, password }, __) => {
-            return User.findUser(email, password)
         }
     }
 }
