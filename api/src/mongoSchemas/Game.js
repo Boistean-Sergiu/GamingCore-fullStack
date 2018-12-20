@@ -15,10 +15,13 @@ const GameSchema = new Schema({
                 type: String,
                 required: true
             },
-            
+            added: {
+                type: Int16Array,
+                required: true
+            }
         }
     ],
-    rating: String,
+    rating: Float32Array,
     wishers: {
         type: [Schema.Types.ObjectId],
         ref: 'users'
@@ -26,5 +29,13 @@ const GameSchema = new Schema({
     owners: {
         type: [Schema.Types.ObjectId],
         ref: 'users'
+    },
+    activePlayers: {
+        type: [Schema.Types.ObjectId],
+        ref: 'users'
+    },
+    reviews: {
+        type: [Schema.Types.ObjectId],
+        ref: 'reviews'
     }
 })
