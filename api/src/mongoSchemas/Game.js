@@ -11,13 +11,13 @@ const GameSchema = new Schema({
     },
     fanTags: [
         {
-            tagName: {
+            name: {
                 type: String,
                 required: true
             },
             added: {
-                type: Int16Array,
-                required: true
+                type: [Schema.Types.ObjectId],
+                ref: 'users'
             }
         }
     ],
