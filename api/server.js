@@ -1,26 +1,31 @@
-const { ApolloServer, gql } = require('apollo-server');
-const mongoose = require('mongoose')
-const config = require('./config/config')
+const { ApolloServer } = require('apollo-server');
+const mongoose = require('mongoose');
+const config = require('./config/config');
 
-const typeDefs = require('./src/apollo/typeDefs')
-const resolvers = require('./src/apollo/resolvers')
+const typeDefs = require('./src/apollo/typeDefs');
+const resolvers = require('./src/apollo/resolvers');
 
-const SteamAPI = require('./src/datasources/steam')
-
+const SteamAPI = require('./src/datasources/steam');
 
 mongoose
-    .connect(config.mongoUrl, { useNewUrlParser: true })
-    .then(() => console.log('Mongo connected'))
-    .catch(err => console.log(err))
+  .connect(
+    config.mongoUrl,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log('Mongo connected'))
+  .catch(err => console.log(err));
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    dataSources: () => ({
-        steamAPI: new SteamAPI()
-    })
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    steamAPI: new SteamAPI()
+  })
+  // context: ({req}) => {
+  //     const token = req.headers.authorization || ''
+  // }
 });
 
 server.listen().then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`);
+  console.log(`🚀  Server ready at ${url}`);
 });

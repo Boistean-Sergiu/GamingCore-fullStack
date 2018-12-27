@@ -21,7 +21,6 @@ const GameSchema = new Schema({
             }
         }
     ],
-    rating: Float32Array,
     wishers: {
         type: [Schema.Types.ObjectId],
         ref: 'users'
