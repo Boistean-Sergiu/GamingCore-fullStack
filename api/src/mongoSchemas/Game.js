@@ -5,26 +5,9 @@ const GameSchema = new Schema({
         type: String,
         required: true
     },
-    officialTags: {
-        type: [String],
-        required: true
-    },
-    fanTags: [
-        {
-            name: {
-                type: String,
-                required: true
-            },
-            added: {
-                type: [Schema.Types.ObjectId],
-                ref: 'users'
-            }
-        }
-    ],
-    rating: Float32Array,
-    wishers: {
+    tags: {
         type: [Schema.Types.ObjectId],
-        ref: 'users'
+        ref: 'tags'
     },
     owners: {
         type: [Schema.Types.ObjectId],
@@ -33,9 +16,7 @@ const GameSchema = new Schema({
     activePlayers: {
         type: [Schema.Types.ObjectId],
         ref: 'users'
-    },
-    reviews: {
-        type: [Schema.Types.ObjectId],
-        ref: 'reviews'
     }
 })
+
+module.exports = Game = model('games', GameSchema)

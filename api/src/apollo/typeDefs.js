@@ -21,13 +21,13 @@ module.exports = typeDefs = `
     type Message {
         id: ID!
         from: User!
-        to: User!
+        to: User!   
         created_at: String
         text: String!
     }
     type fanTag{
         id: ID!
-        name: String!
+        name: String!   
         added: [User!]!
     }
     type Game {
