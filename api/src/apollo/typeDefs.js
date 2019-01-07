@@ -2,6 +2,7 @@ module.exports = typeDefs = `
     type Mutation {
         signup(email: String!, password: String!, username: String!): AuthPayload
         addUser(email: String!, password: String!, username: String!): User!
+        register(username: String!,email: String!, password: String!, retypedPassword: String!): Boolean!
     }
     type AuthPayload{
         token: String
@@ -30,10 +31,17 @@ module.exports = typeDefs = `
         name: String!   
         added: [User!]!
     }
+    type Review {
+        id: ID!
+        text: String!
+        creator: User!
+    }
     type Game {
         id: ID!
         name: String!
         officialTags: [String!]!
-        fanTags: [fanTag!]!
+        fanTags: [fanTag!]
+        description: String!
+        reviews: [Review!]
     }
-`
+`;
