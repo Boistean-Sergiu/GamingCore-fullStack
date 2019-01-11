@@ -2,7 +2,7 @@ module.exports = typeDefs = `
     type Mutation {
         signup(email: String!, password: String!, username: String!): AuthPayload
         addUser(email: String!, password: String!, username: String!): User!
-        register(username: String!,email: String!, password: String!, retypedPassword: String!): Boolean!
+        register(username: String!,email: String!, password: String!, retypedPassword: String!): User
     }
     type AuthPayload{
         token: String

@@ -7,7 +7,7 @@ const ProfileSchema = new Schema({
         ref: 'users'
     },
     gamesLists: {
-        wishilist: [Schema.Types.ObjectId],
+        type: [Schema.Types.ObjectId],
         ref: 'games'
     },
     handle: {

@@ -1,12 +1,11 @@
-const mongoose = require('mongoose');
 const { UserInputError } = require('apollo-server');
 const { User } = require('../mongoSchemas');
 const { emailValidation } = require('../validations');
 
 module.exports = resolvers = {
   Query: {
-    getUsers: async (_, __, { dataSources }) => {
-      return dataSources.steamAPI.getSteamAPIList();
+    getUsers: async () => {
+      return User.find()
     },
 
     findUser: async (_, { email, password }, __) => {
@@ -15,8 +14,11 @@ module.exports = resolvers = {
   },
   Mutation: {
     register: async (_, { username, email, password, retypedPassword }, __) => {
-      //   const userExists = User.userExists(email);
-      //   return emailValidation(email);
+      let user = await User
+        .findOne({ username })
+      if (user) {
+        throw new UserInputError('Username deja folosit')
+      }
 
       if (!emailValidation(email)) {
         throw new UserInputError('Email invalid');
@@ -26,7 +28,13 @@ module.exports = resolvers = {
         throw new UserInputError('Password-urile nu coincid');
       }
 
-      return emailValidation(email);
+      let newUser = 
+
+      return {
+        username,
+        email,
+        password
+      };
     },
     addUser: async (_, { username, email, password }, ___) => {
       const user = new User({
